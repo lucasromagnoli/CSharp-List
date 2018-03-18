@@ -14,7 +14,7 @@ namespace CSharp_List
         public String Name { get; set; }
         public ulong Cpf { get; set; }
         public DateTime DateOfBirth { get; set; }
-
+        
         //Construtores
         public Person(String name, ulong cpf, DateTime dateOfBirth)
         {
