@@ -37,9 +37,9 @@ namespace CSharp_List
 
         public override string ToString()
         {
-            return $"Nome: {Name}" +
-                   $"\nCPF: {Cpf}" +
-                   $"\nData de nascimento: {DateOfBirth.ToShortDateString()} -> {getAge()} anos";
+            return $"Nome: {Name} " +
+                   $"| CPF: {Cpf} " +
+                   $"| Data de nascimento: {DateOfBirth.ToShortDateString()} [{getAge()} anos]";
         }
     }
 }

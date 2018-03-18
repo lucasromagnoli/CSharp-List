@@ -123,7 +123,7 @@ namespace CSharp_List
                     sw.WriteLine("Lista de pessoas:");
                     people.ForEach(delegate (Person person)
                     {
-                        sw.WriteLine(String.Format("Nome: {0} | Data de nascimento: {1} ({2} anos) | CPF: {3}", person.Name, person.DateOfBirth.ToShortDateString(),person.getAge(),person.Cpf));
+                        sw.WriteLine(person);
                     });
                 }
             
