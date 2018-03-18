@@ -106,14 +106,24 @@ namespace CSharp_List
             Console.WriteLine("\nMais velha: {0} - {1} anos", older.Name, older.getAge());
             Console.WriteLine("Mais jovem: {0} - {1} anos", younger.Name, younger.getAge());
 
-            //Lista com todas as pessoas com menos de 30 anos.
+            //Lista com todas as pessoas com ou menos de 30 anos.
             List<Person> youngPeople = people.FindAll(delegate (Person p) { return p.getAge() <= 30; });
+            //Lista com todas as pessoas com mais de 30 anos.
+            List<Person> olderPeople = people.FindAll(delegate (Person p) { return p.getAge() > 30; });
+
+            //Imprimi na tela a lista das pessoas mais jovens.
             Console.WriteLine("\nLista de pessoas jovens:");
             youngPeople.ForEach(delegate (Person person)
             {
                 Console.WriteLine(String.Format("{0} - {1} anos", person.Name, person.getAge()));
             });
 
+            //Imprimi na tela a lista das pessoas mais velhas.
+            Console.WriteLine("\nLista de pessoas velhas:");
+            olderPeople.ForEach(delegate (Person person)
+            {
+                Console.WriteLine(String.Format("{0} - {1} anos", person.Name, person.getAge()));
+            });
 
 
             //Diretorio a onde o programa está sendo executado.
