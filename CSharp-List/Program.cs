@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace CSharp_List
     {
         static void Main(string[] args)
         {
+            Console.WriteLine($"User: {Environment.UserName}\n" +
+                              $"Machine: {Environment.MachineName}\n" +
+                              $"OS Version: {Environment.OSVersion}\n");
             /* Criamos a tabela de pessoas, onde recebe uma lista de objetos do tipo pessoa.
              * Removemos alguns itens pelo index e outro pelo objeto em si.
              */
@@ -38,18 +42,14 @@ namespace CSharp_List
             people.Add(gabrielGomesDucati);
             people.Remove(gabrielGomesDucati);
 
-            /*
-             * 
-             * 
-             */
-
+            // Variável para receber a pessoa mais velha.
             Person younger;
+            // Variável para receber a pessoa mais nova.
             Person older;
 
             Console.WriteLine("Existe pelo menos uma pessoa com mais de 40 anos?: {0}", people.Exists(p => p.getAge() >= 40) ? "Sim" : "Não");
             Console.WriteLine("Existe pelo menos uma pessoa com menos de 18 anos?: {0}", people.Exists(p => p.getAge() < 18) ? "Sim" : "Não");
             Console.WriteLine("Existe pelo menos uma pessoa com o nome de Lara Teixeira Ducati: {0}", people.Exists(p => p.Name == "Lara Teixeira Ducati") ? "Sim" : "Não");
-
 
             Console.WriteLine("\nLista de pessoas não ordenadas:");
             people.ForEach(delegate (Person person)
@@ -82,7 +82,7 @@ namespace CSharp_List
                 Console.WriteLine(String.Format("{0} - {1} anos", person.Name, person.getAge()));
             });
 
-            // Pessoa mais velha
+            // Acrescentamos a pessoa mais jovem para a variavel older.
             older = people[0];
 
             Console.WriteLine("\nLista ordenadas por idade (Decrescente):");
@@ -95,7 +95,7 @@ namespace CSharp_List
                 Console.WriteLine(String.Format("{0} - {1} anos", person.Name, person.getAge()));
             });
 
-            // Pessoa mais nova
+            // Acrescentamos a pessoa mais jovem para a variavel younger.
             younger = people[0];
 
             //Convertendo a lista para array.
@@ -115,6 +115,18 @@ namespace CSharp_List
             });
 
 
+
+            //Diretorio a onde o programa está sendo executado.
+            string path = $@"{Environment.CurrentDirectory}\log.txt";
+            using (StreamWriter sw = File.CreateText(path))
+                {
+                    sw.WriteLine("Lista de pessoas:");
+                    people.ForEach(delegate (Person person)
+                    {
+                        sw.WriteLine(String.Format("Nome: {0} | Data de nascimento: {1} ({2} anos) | CPF: {3}", person.Name, person.DateOfBirth.ToShortDateString(),person.getAge(),person.Cpf));
+                    });
+                }
+            
             Console.WriteLine("\nAperte qualquer tecla para o programa finalizar...");
             Console.ReadKey(); // Apertar qualquer tecla para o programa finalizar.
         }
