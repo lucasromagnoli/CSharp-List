@@ -24,9 +24,10 @@ namespace CSharp_List
                 new Person("Helena Ducati Machado", 33546757998, Convert.ToDateTime("4/7/1980"))
             };
 
-            people.ForEach(delegate (Person p)
+            Console.WriteLine("Lista de pessoas não ordenadas:");
+            people.ForEach(delegate (Person person)
             {
-                Console.WriteLine(p);
+                Console.WriteLine(String.Format("{0} - {1} anos", person.Name, person.getAge()));
             });
 
             Console.WriteLine("\nAperte qualquer tecla para o programa finalizar...");
