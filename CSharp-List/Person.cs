@@ -11,7 +11,7 @@ namespace CSharp_List
     public class Person
     {
         //Propriedades
-        public String Name { get; set; }
+        public string Name { get; set; }
         public ulong Cpf { get; set; }
         public DateTime DateOfBirth { get; set; }
         

@@ -48,6 +48,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Homeworks\Homework.cs" />
+    <Compile Include="MenuOptions\Clear.cs" />
+    <Compile Include="MenuOptions\Exit.cs" />
+    <Compile Include="Homeworks\HomeworkList.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Option.cs" />
+    <Compile Include="MenuOptions\List.cs" />
+    <Compile Include="MenuOptions\Options.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
