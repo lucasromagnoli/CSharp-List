@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HomeworkOption.cs" />
     <Compile Include="Homeworks\Homework.cs" />
     <Compile Include="MenuOptions\Clear.cs" />
     <Compile Include="MenuOptions\Exit.cs" />

@@ -12,12 +12,14 @@ namespace CSharp_List
 
         public string Name { get; set; }
         public string Description { get; set; }
+        public string call;
+        public ConsoleKey key;
 
         public abstract void start();
 
         public override string ToString()
         {
-            return $@"[{Name}] - {Description}";
+            return $@"[{Name} ~ Shortcut: {key.ToString()}] - {Description}";
         }
 
     }

@@ -13,9 +13,10 @@ namespace CSharp_List.MenuOptions
         {
             this.Name = name;
             this.Description = description;
+            this.call = "options";
+            this.key = ConsoleKey.D2;
         }
-        public override void start()
-        {
+        public override void start(){
             new Menu().printOptions();
         }
     }

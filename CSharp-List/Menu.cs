@@ -8,17 +8,32 @@ using CSharp_List.MenuOptions;
 
 namespace CSharp_List
 {
+
     public class Menu
     {
+        public static void ClearCurrentConsoleLine()
+        {
+            int currentLineCursor = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, currentLineCursor);
+        }
+
         IDictionary<String, Option> mainMenu = new Dictionary<String, Option>();
+        IDictionary<ConsoleKey, Option> keyMenu = new Dictionary<ConsoleKey, Option>();
+        Option[] options = new Option[] { new Clear(), new Options(), new Exit(), new List()};
 
         public Menu()
         {
-            mainMenu.Add("exit", new Exit());
-            mainMenu.Add("options", new Options());
-            mainMenu.Add("clear", new Clear());
-            mainMenu.Add("list", new List());
-            printOptions();
+            for(int contador = 0; contador < options.Length; contador++)
+            {
+                Option op = options[contador];
+
+                mainMenu.Add(op.call, op);
+                keyMenu.Add(op.key, op);
+            }
+
+            printOptions("Escolha uma das opções abaixo.\nPara selecionar basta escrever a opção ou pressionar a tecla de atalho.");
             start();
         }
 
@@ -26,9 +41,29 @@ namespace CSharp_List
         {
             string read;
             Option option;
+   
+            ConsoleKeyInfo keyOption;
 
-                read = Console.ReadLine().ToLower();
+            keyOption = Console.ReadKey();
 
+            try
+            {
+                option = keyMenu[keyOption.Key];
+                ClearCurrentConsoleLine();
+                option.start();
+            }
+            catch (KeyNotFoundException)
+            {
+                ClearCurrentConsoleLine();
+                if (Char.IsLetter(keyOption.KeyChar))
+                {
+                    Console.Write(keyOption.KeyChar);
+                    read = keyOption.KeyChar + Console.ReadLine().Trim().ToLower();
+                } else
+                {
+                    read = Console.ReadLine().Trim().ToLower();
+                }
+                
                 try
                 {
                     option = mainMenu[read];
@@ -39,15 +74,16 @@ namespace CSharp_List
                 {
                     Console.WriteLine("Opção invalida");
                 }
+            }
 
             this.start();
         }
 
-        public void printOptions()
+        public void printOptions(string text = "Escolha uma das opções abaixo:")
         {
-            Console.WriteLine("Escolha uma opção: ");
-            Console.WriteLine(this);
+            Console.WriteLine($"{text}\n{this}");
         }
+
         public override string ToString()
         {
             string menu = "";

@@ -12,12 +12,14 @@ namespace CSharp_List.MenuOptions
         {
             this.Name = name;
             this.Description = description;
+            this.call = "clear";
+            this.key = ConsoleKey.D1;
         }
 
         public override void start()
         {
             Console.Clear();
-            
+            new Menu().printOptions();
         }
     }
 }

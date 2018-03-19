@@ -7,21 +7,16 @@ using CSharp_List.Homeworks;
 
 namespace CSharp_List.MenuOptions
 {
-    public class List : Option
+    public class List : HomeworkOption
     {
-        HomeworkList homework = new HomeworkList();
 
         public List(string name = "List", string description = "Homework - about lists")
         {
             this.Name = name;
             this.Description = description;
-        }
-
-        public override void start()
-        {
-            Console.Clear();
-            Console.WriteLine($"Iniciando o homework {this.Name}...\n");
-            homework.Start();
+            this.homework = new HomeworkList();
+            this.call = "list";
+            this.key = ConsoleKey.D4;
         }
 
     }

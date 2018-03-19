@@ -12,6 +12,8 @@ namespace CSharp_List.MenuOptions
         {
             this.Name = name;
             this.Description = description;
+            this.call = "exit";
+            this.key = ConsoleKey.D3;
         }
 
         public override void start()
